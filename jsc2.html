@@ -1,0 +1,107 @@
+<html>
+    <head>
+    </head>
+    <body>
+        
+        <input type="text" id="getVal">
+        <span>
+            <button id="get">Add</button>
+        </span>
+        <div id="opt"></div>
+        
+        <script>
+            'use strict' 
+          
+            var list = [];
+            window.onload = function() {
+                var inp = document.getElementById('getVal');
+                var btn = document.getElementById('get');
+                var opt = document.getElementById('opt');
+                
+                
+                btn.onclick = function() {
+                    var value = inp.value;
+                    opt.innerHTML = "";
+                    list.push({
+                        "task" : value,
+                        "done" : false
+                    });
+                    
+                    for(var i=0; i< list.length; i++) {
+                    
+                   var element = list[i].done;
+                    opt.innerHTML += '<li'+ ' value='+ element +' onclick="strick(this)"' + 'id=' + i + '>' + list[i].task + '</li>';
+                        
+                        localStorage.setItem("Main",JSON.stringify(list));
+                }
+                    
+                  
+                     
+                    
+                    
+                };
+                
+                var y = JSON.parse(localStorage.getItem("Main"));
+                console.log(y);
+                for(var i=0; i<y.length; i++) {
+                    opt.innerHTML += '<li onclick="strick(this)"' + 'id=' + i + '>' + y[i].task + '</li>';
+                }
+                
+            
+                
+               
+                
+            };
+            
+            
+            
+            function strick(t) {
+            
+                console.log(list[t.id].done);
+                list[t.id].done = true;
+                console.log(list[t.id].done);
+                t.style.color = "green";
+
+            }
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+<!--in for ojb
+of for array
+
+if x = array
+x.forEach(function(y) {
+console.log(y);
+})
+
+
+x.push( {
+ "Obj1" : {"hellp": 1},
+  "Obj2": {"h": 'k'}
+})
+
+in this x[0] has a object which has 2 objects
+
+splice spice 
+
+split  
+
+JSON.pasrse()
+JSON.stringify()
+
+closure
+callback
+
+IIFE - > 
+
+let x be an obj
+locolStroage.setItem=('main',JSON.stringify(x));
+-->
